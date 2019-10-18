@@ -6,7 +6,6 @@
     </head>
     <body>
         <div id="navbar" class="w3-bar" style="background-color:#92C4BE">
-            <a class="w3-bar-item w3-button" href="main?action=login">I'm a Bub</a>
             <a class="w3-bar-item w3-button" href="main?action=join">Sign me up!</a>
         </div>
         <div class="w3-container">
@@ -14,6 +13,7 @@
             <h1>Login to Hubbub&trade;</h1>
             <form method="POST" action="main">
                 <input type="hidden" name="action" value="login"/>
+                
                 <span style="display:inline-block; width:6em;"> 
                     Username:
                 </span> 
@@ -23,6 +23,7 @@
                     placeholder="username"
                     required/>
                 <br><br>
+                
                 <span style="display:inline-block; width:6em;">
                     Password:
                 </span> 
@@ -32,7 +33,12 @@
                     placeholder="password" 
                     required/>
                 <br><br>
-                <input type="submit" value="Login"/>
+                
+                <input 
+                    class="hbutton" 
+                    type="submit" 
+                    name="Login" 
+                    value="Login"/>
             </form>
         </div>
     </body>

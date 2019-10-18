@@ -1,3 +1,0 @@
-<c:if test="${not empty user}">
-    Logged in as ${user}
-</c:if>

@@ -7,7 +7,7 @@
     </head>
     <body>
         <div id="navbar" class="w3-bar" style="background-color:#92C4BE">
-        <!-- Added logic to determine what should display in the navbar using c:if tests  -->
+        <!-- Added logic to determine what should display in the navbar using c:if tests  10.17.2019 -james -->
             <c:if test="${not empty user}">
                 Logged in as <a class="w3-bar-item w3-button" href="inactive">${user}</a>
                 <a class="w3-bar-item w3-button" href="main?action=logout">Logout</a>
@@ -16,7 +16,7 @@
                 <a class="w3-bar-item w3-button" href="main?action=login">I'm a Bub</a>
                 <a class="w3-bar-item w3-button" href="main?action=join">Sign me up!</a>
             </c:if>
-        <!-- Using c:choose/when/otherwise would also work just as nicely in the navbar -->
+        <!-- Using c:choose/when/otherwise would probably also work for the above in the navbar -->
         </div>
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>

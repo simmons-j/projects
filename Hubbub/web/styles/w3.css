@@ -1,4 +1,21 @@
 .flash {color: #FF2B06;}
+.navbar-item {
+    float:left;
+    width:auto;
+    border:none;
+    display:block;
+    outline:0;
+}
+
+.hbutton {
+    border-color: #92C4BE; 
+    border-radius: 3px; 
+    border-width: 1px; 
+    border-style: solid; 
+    background-color: #E2DFD3; 
+    color: #912F49;
+    padding: 4px 12px;
+}
 
 #flex-container {
     width: auto;

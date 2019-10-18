@@ -4,7 +4,7 @@ import edu.acc.jee.hubbub.domain.User;
 
 public class UserAuthenticator {
     public static boolean authenticate(User user, String validUsername,
-            String validPassword, String validId) {
+            String validPassword) {
         if (user == null || user.getUsername() == null || 
                 user.getPasshash()== null) {
             return false;

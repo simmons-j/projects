@@ -1,5 +1,9 @@
 package edu.acc.jee.hubbub;
 
+import edu.acc.jee.hubbub.domain.User;
+import java.util.HashSet;
+import java.util.Set;
+
 public class UserValidator {
     public static final String USERNAME_PATTERN = "^\\w{6,20}$";
     public static final String PASSWORD_PATTERN = "^[^<>'\"]{8,50}$"; 
@@ -10,9 +14,9 @@ public class UserValidator {
             errors.add("Username cannot be null");
         else if (!user.getUsername().matches(USERNAME_PATTERN))
             errors.add("Username must have 6-20 characters");
-        if (user.getPassword() == null)
+        if (user.getPasshash()== null)
             errors.add("Password cannot be null");
-        else if (!user.getPassword().matches(PASSWORD_PATTERN))
+        else if (!user.getPasshash().matches(PASSWORD_PATTERN))
             errors.add("Password must have 8-50 characters");
         return errors;
     }

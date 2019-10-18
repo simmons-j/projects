@@ -7,13 +7,13 @@
     <body>
         <div id="navbar" class="w3-bar" style="background-color:#92C4BE">
             <a class="w3-bar-item w3-button" href="main?action=login">I'm a Bub</a>
-            <a class="w3-bar-item w3-button" href="main?action=join">Sign me up!</a>
         </div>
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
             <h1>Join Hubbub&trade;</h1>
             <form method="POST" action="main">
                 <input type="hidden" name="action" value="join"/>
+
                 What would you like your username to be?
                 <br>
                 <span style="display:inline-block; width:6em;"> 
@@ -24,6 +24,7 @@
                     name="username" 
                     placeholder="must be 6-20 characters"
                     required/>
+
                 <br>
                     Enter a Password
                 <br>
@@ -33,16 +34,18 @@
                 <input 
                     type="password" 
                     name="password1" 
-                    placeholder="must be 8-50 characters"
+                    placeholder="must be 8-50 characters" 
                     required/>
                 <br><br>
-                <!-- c:if test= -->
+                
                 <span style="display:inline-block; width:6em;"> 
                     Confirm your Password:
                 </span>
-                <input type="password" name="password2" required/>
-                <!-- c:if -->
+                <input type="password" 
+                       name="password2" 
+                       required/>
                 <br><br>
+
                 <input type="submit" value="Sign Up!"/>
             </form>
         </div>
