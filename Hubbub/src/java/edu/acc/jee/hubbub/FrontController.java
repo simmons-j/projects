@@ -24,11 +24,11 @@ public class FrontController extends HttpServlet {
         switch (action) {
             default:
             case "guest": destination = guest(request); break;
-            // case "login": destination = login(request); break;
-            // case "logout": destination = logout(request); break;
-            // case "join": destination = join(request); break;
-            // case "timeline": destination = timeline(request); break;
-            // case "post": destination = post(request); break;
+            case "login": destination = login(request); break;
+            case "logout": destination = logout(request); break;
+            //case "join": destination = join(request); break;
+            //case "timeline": destination = timeline(request); break;
+            //case "post": destination = post(request); break;
         }
         
         String view;
@@ -42,7 +42,49 @@ public class FrontController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// Added logout 10.18.2019 -james
+// Logout invalidates the current session and redirects to the login page 
+    private String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect.login";
+    }
+
+// START OF CODE INSERTED FROM edu.caa.java3.login.FrontController.java    
+    // Start of the login request
+    private String login(HttpServletRequest request) {
+    // If user is already logged in, they are redirected to the guest timeline
+        if (request.getSession().getAttribute("user") != null)
+            return "redirect:guest";
+        
+    // Redirect improper request methods to login
+        if (request.getMethod().equalsIgnoreCase("GET"))
+            return "login";
+
+    // Validate the login form fields
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        User user = new User(username, password);
+        Set<String> errors = UserValidator.validate(user);
+        if (!errors.isEmpty()) {
+            request.setAttribute("errors", errors);
+            return "login";
+        }
+        
+        // form is valid so authenticate the user
+        String validUsername = this.getServletContext().getInitParameter("validUsername");
+        String validPassword = this.getServletContext().getInitParameter("validPassword");
+        /*String validId = this.getServletContext().getInitParameter("validId");*/
+        if (!UserAuthenticator.authenticate(user, validUsername, validPassword/*, validId*/)) {
+            request.setAttribute("flash", "Access Denied");
+            return "login";
+        }
+        
+        // if we get here, user is legit so add to session and forward to the timeline view
+        request.getSession().setAttribute("user", user);
+        return "timeline";
+    }
+// END OF CODE INSERTED FROM edu.caa.java3.login.FrontController.java
+
     @Override
     public void init() {
         ServletContext ctx = this.getServletContext();
@@ -52,43 +94,23 @@ public class FrontController extends HttpServlet {
         redirectTag = ctx.getInitParameter("redirect.tag");
         pageSize = Integer.parseInt(ctx.getInitParameter("page.size"));
     }
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
     private String guest(HttpServletRequest request) {
         List<Post> posts = getDataService().findPostsByPage(0, pageSize);

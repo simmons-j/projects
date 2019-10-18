@@ -44,6 +44,7 @@ public class ListDao implements DataService {
     @Override
     public synchronized boolean userExists(String username) {
         return this.findUserByUsername(username) != null;
+        // Check to see if user already exists on Registration
     }
 
     @Override

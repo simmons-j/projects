@@ -4,8 +4,7 @@ import edu.acc.jee.hubbub.domain.User;
 import java.io.Serializable;
 
 public class UserDTO implements Serializable {
-    public static final String PASSWORD_PATTERN =
-            "^[^<>'%\"]{8,50}$";    
+    public static final String PASSWORD_PATTERN = "^[^<>'%\"]{8,50}$";    
     private String username;
     private String password;
 

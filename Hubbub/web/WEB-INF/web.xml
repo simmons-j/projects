@@ -20,6 +20,10 @@
         <param-name>page.size</param-name>
         <param-value>3</param-value>
     </context-param>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
     <listener>
         <description>ServletContextListener</description>
         <listener-class>edu.acc.jee.hubbub.StartupListener</listener-class>
@@ -28,9 +32,18 @@
         <servlet-name>FrontController</servlet-name>
         <servlet-class>edu.acc.jee.hubbub.FrontController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -38,6 +51,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
         <welcome-file>main</welcome-file>
     </welcome-file-list>
 </web-app>
