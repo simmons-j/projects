@@ -1,7 +1,7 @@
-<div class="w3-card-4" style="margin-bottom:64px">
+<div class="w3-card-4" style="margin-bottom:24px">
     <header>
         <div id="flex-container" class="w3-container w3-light-gray">
-            <div id="main"><b>Posted by ${post.author}</b></div>
+            <div id="main">Posted by ${post.author}</div>
             <div id="main" style="color:#8F3049"><small>${post.posted}</small></div>
         </div>
     </header>

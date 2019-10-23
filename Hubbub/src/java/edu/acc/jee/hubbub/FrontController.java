@@ -28,9 +28,11 @@ public class FrontController extends HttpServlet {
             case "guest": destination = guest(request); break;
             case "login": destination = login(request); break;
             case "logout": destination = logout(request); break;
-            //case "join": destination = join(request); break;
-            //case "timeline": destination = timeline(request); break;
-            //case "post": destination = post(request); break;
+            case "join": destination = join(request); break;
+            case "timeline": destination = timeline(request); break;
+            case "post": destination = userpost(request); break;
+            case "profile": destination = profile(request); break;
+            case "updateprofile": doPost(request, response); break;
         }
         
         String view;
@@ -44,16 +46,35 @@ public class FrontController extends HttpServlet {
         }
     }
 
+
+// Added User Profile 10.21.2016 - james
+// IN PROGESS User profile
+    private String profile(HttpServletRequest request) {
+    // If user is not logged in, they are redirected to login
+        if (request.getSession().getAttribute("user") != null)
+            return "redirect:login";
+        return "profile";
+    }
+
+// Guest timeline
+    private String guest(HttpServletRequest request) {
+        List<Post> posts = getDataService().findPostsByPage(0, pageSize);
+        request.setAttribute("posts", posts);
+        return "guest";
+    }
+
 // Added logout 10.18.2019 -james
 // Logout invalidates the current session and redirects to the login page 
     private String logout(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "redirect.login";
+        return "redirect:guest";
     }
 
 // Added join 10.18.2019 -james
-// Join 
+// IN PROGESS Join 
     private String join(HttpServletRequest request) {
+    throw new UnsupportedOperationException("Hold yer horses! This view in still under construction."); //To change body of generated methods, choose Tools | Templates.
+
     // If user is already logged in, they are redirected to their own timeline
         if (request.getSession().getAttribute("user") != null)
             return "redirect:timeline";
@@ -75,10 +96,29 @@ public class FrontController extends HttpServlet {
             request.setAttribute("flash", "Access Denied");
             return "login";
     }
-    
 
-// START OF CODE INSERTED FROM edu.caa.java3.login.FrontController.java    
-    // Start of the login request
+// IN PROGRESS Timeline (user's timeline) 
+    private String timeline(HttpServletRequest request) {
+        throw new UnsupportedOperationException("Hold yer horses! This view in still under construction."); //To change body of generated methods, choose Tools | Templates.
+
+    // If user is not logged in, they are redirected to the guest timeline
+        if (request.getSession().getAttribute("user") != null)
+            return "timeline";
+    // Redirect to login if there is no user logged in
+        else 
+            return "redirect:login";
+    }
+
+    
+// IN PROGRESS Post (users posting to hubbub) 
+    private String userpost(HttpServletRequest request) {
+        throw new UnsupportedOperationException("Hold yer horses! This view in still under construction."); //To change body of generated methods, choose Tools | Templates.
+    
+        Post post = new Post();
+        return "timeline";
+    }
+
+// IN PROGESS Login 
     private String login(HttpServletRequest request) {
     // If user is already logged in, they are redirected to their own timeline
         if (request.getSession().getAttribute("user") != null)
@@ -113,7 +153,6 @@ public class FrontController extends HttpServlet {
         request.getSession().setAttribute("user", user);
         return "timeline";
     }
-// END OF CODE INSERTED FROM edu.caa.java3.login.FrontController.java
 
     @Override
     public void init() {
@@ -140,12 +179,6 @@ public class FrontController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
-
-    private String guest(HttpServletRequest request) {
-        List<Post> posts = getDataService().findPostsByPage(0, pageSize);
-        request.setAttribute("posts", posts);
-        return "guest";
     }
 
     @SuppressWarnings("unchecked")

@@ -1,3 +1,20 @@
+<!-- Day 1 Homework
+1) Implement the login feature. (Clicking the I'm a Bub link on the homepage should navigate to 
+main?action=login.)
+- The login view should display a form requesting two fields: a username text field and a password 
+password field.
+- The submit button should 
+    - POST the form to main?action=login and 
+    - return the user to the login view if:
+        - the submitted fields are invalid 
+            or ||
+        - if the submitted username and password values do not match one of the users created in the 
+        StartupListener. 
+      * Use the message "Access Denied" in these scenarios.
+- A successful login should put the matching User domain object into session scope and redirect the 
+browser to main?action=timeline.
+- It should not be possible to access the login view if the user is already logged-in.
+-->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
     <head>
@@ -34,11 +51,7 @@
                     required/>
                 <br><br>
                 
-                <input 
-                    class="hbutton" 
-                    type="submit" 
-                    name="Login" 
-                    value="Login"/>
+                <input class="hbutton" type="submit" name="Login" value="Login"/>
             </form>
         </div>
     </body>

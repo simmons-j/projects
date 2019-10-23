@@ -1,0 +1,24 @@
+<!-- WORK IN PROGRESS -->
+<div class="w3-card-4" style="margin-bottom:64px">
+    <header>
+        <div id="flex-container" class="w3-container w3-light-gray">
+            <div id="main">Posted by ${user}<div>
+            <div id="main" style="color:#8F3049"><small>${post.posted}</small></div>
+        </div>
+    </header>
+    <div class="w3-container">
+        <form method="POST" action="main">
+        
+        
+        
+            <input 
+                style="hbutton" 
+                type="submit" 
+                name="Post" 
+                value="Post"/>
+        </form>
+    </div>
+    <footer class="w3-container" style="background-color:#E2DDD2">
+        <hr/>
+    </footer>
+</div>

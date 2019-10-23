@@ -11,6 +11,7 @@
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
             <h1>Join Hubbub&trade;</h1>
+<!--
             <form method="POST" action="main">
                 <input type="hidden" name="action" value="join"/>
 
@@ -48,6 +49,7 @@
 
                 <input type="submit" value="Sign Up!"/>
             </form>
+-->
         </div>
     </body>
 </html>

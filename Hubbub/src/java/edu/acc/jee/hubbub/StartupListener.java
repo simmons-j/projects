@@ -15,9 +15,13 @@ public class StartupListener implements ServletContextListener {
         
         User u1 = dao.addUser(new UserDTO("johndoe", "P@ssw0rd"));
         User u2 = dao.addUser(new UserDTO("janedoe", "P@ssw0rd"));
+        User u3 = dao.addUser(new UserDTO("jerrydoe", "P@ssw0rd"));
+        User u4 = dao.addUser(new UserDTO("hubadmin", "P@ssw0rd"));
         
         Post p1 = dao.addPost("My first Hubbub post! #JavaRules", u1);
         Post p2 = dao.addPost("Joined 'cause @johndoe told me to. #JavaRules", u2);
+        Post p3 = dao.addPost("Who are these other people? #DoeD'oh", u3);
+        Post p4 = dao.addPost("@johndoe @janedoe Please keep posts on topic! #mmmspaghetti", u4);
         
         sce.getServletContext().setAttribute("dao", dao);
     }
