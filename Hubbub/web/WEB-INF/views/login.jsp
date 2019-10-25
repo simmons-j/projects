@@ -1,6 +1,6 @@
 <!-- Day 1 Homework
-1) Implement the login feature. (Clicking the I'm a Bub link on the homepage should navigate to 
-main?action=login.)
+1) Implement the login feature. 
+(Clicking the I'm a Bub link on the homepage should navigate to main?action=login.)
 - The login view should display a form requesting two fields: a username text field and a password 
 password field.
 - The submit button should 
@@ -23,36 +23,45 @@ browser to main?action=timeline.
     </head>
     <body>
         <div id="navbar" class="w3-bar" style="background-color:#92C4BE">
+            <a class="w3-bar-item w3-button" href="main?action=timeline">Hubbub&trade; Home</a>
             <a class="w3-bar-item w3-button" href="main?action=join">Sign me up!</a>
         </div>
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
             <h1>Login to Hubbub&trade;</h1>
-            <form method="POST" action="main">
-                <input type="hidden" name="action" value="login"/>
-                
-                <span style="display:inline-block; width:6em;"> 
-                    Username:
-                </span> 
-                <input 
-                    type="text" 
-                    name="username" 
-                    placeholder="username"
-                    required/>
-                <br><br>
-                
-                <span style="display:inline-block; width:6em;">
-                    Password:
-                </span> 
-                <input 
-                    type="password" 
-                    name="password" 
-                    placeholder="password" 
-                    required/>
-                <br><br>
-                
-                <input class="hbutton" type="submit" name="Login" value="Login"/>
-            </form>
+            <section class="w3-card-4 w3-container w3-light-gray">
+                <form method="POST" action="main">
+                    <input type="hidden" name="action" value="login"/>
+                    <p style="font-weight: bold;">Enter your username and password</p>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="username" style="display:inline-block; width:6em;"> 
+                        Username:
+                    </label> 
+                    <input 
+                        type="text" 
+                        id="username"
+                        name="username" 
+                        placeholder=" username"
+                        required/>
+                    <br><br>
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="password" style="display:inline-block; width:6em;">
+                        Password:
+                    </label> 
+                    <input 
+                        type="password"
+                        id="password"
+                        name="password" 
+                        placeholder=" password"
+                        required/>
+                    <br><br>
+                    <input class="hbutton" type="submit" name="Login" value="Login"/>
+                </form>
+                <br>
+            </section>
         </div>
     </body>
+    <script type="text/javascript">
+        document.getElementById("username").focus();
+    </script>
 </html>

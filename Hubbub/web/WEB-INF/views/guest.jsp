@@ -1,3 +1,6 @@
+<!-- Day 1 Homework
+3) Alter the guest feature to be inaccessible to logged-in users. They go to the timeline instead.
+-->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +15,11 @@
         </div>
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
-            <!-- Added the c:if test below to display the username when logged in -->
-            <h1>Welcome to Hubbub&trade;<c:if test="${not empty user}">, ${user}</c:if></h1>
+            <h1>Welcome to Hubbub&trade;
+                <c:if test="${not empty user}">
+                    , ${user}
+                </c:if>
+            </h1>
             <div class="w3-margin">
                 <p>These are the latest <b>bubs&trade;</b>.</p>
                 <c:forEach var="post" items="${posts}">

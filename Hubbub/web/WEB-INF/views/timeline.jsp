@@ -1,3 +1,11 @@
+<!-- Day 1 Homework
+2) Implement the timeline feature.
+- The timeline view is the same as the guest view, except that the "Welcome to Hubbub" message is 
+followed by a comma and the logged-in User's name.
+- The "I'm a Bub" and "Sign Me Up" links should be disabled, or removed, and replaced with a 
+"Log Me Out" link that navigates to main?action=logout.
+- The timeline view should not be accessible if there is no User object in session scope.
+-->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +20,6 @@
         </div>
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
-            <!-- Added the c:if test below to display the username when logged in -->
             <h1>Welcome to Hubbub&trade;<c:if test="${not empty user}">, ${user}</c:if></h1>
             <div class="w3-margin">
                 <p>Here are your most recent <b>bubs&trade;</b>.</p>

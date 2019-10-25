@@ -35,16 +35,24 @@
                 </div>
             </header>
             <div class="w3-container">
-                    <form method="POST">
-                        <input 
-                            type="hidden" 
-                            name="MAX_FILE_SIZE" 
-                            value="3000"/>
-                        <input
-                            class="hbutton2"
-                            type="file" 
-                            accept="image/gif,image/jpeg"/>
-                    </form>
+                <form method="POST">
+                    &nbsp;&nbsp;&nbsp;
+                    <img src="images/silhouette-avatar.jpg" 
+                             alt="default avatar" 
+                             style="max-height: 200px; 
+                                    margin: 5px 0px; 
+                                    border-style: solid; 
+                                    border-width: 1px;
+                                    border-color: lightgray;"/>
+                    <input 
+                        type="hidden" 
+                        name="MAX_FILE_SIZE" 
+                        value="3000"/>
+                    <input
+                        class="hbutton2"
+                        type="file" 
+                        accept="image/gif,image/jpeg"/>
+                </form>
             </div>
             <footer class="w3-container" style="background-color:#E2DDD2">
                 <p></p>
@@ -69,6 +77,7 @@
             </header>
             <div class="w3-container" style="display:inline-block; width:auto;">
                 <form method="POST" action="main">
+                    &nbsp;&nbsp;&nbsp;
                     <p style="display:inline-block; width:6em;">First Name:</p>
                     <input 
                         type="text" 
@@ -76,6 +85,7 @@
                         placeholder=" Mary"
                         title="Type your first name here"/>
                     <br>
+                    &nbsp;&nbsp;&nbsp;
                     <p style="display:inline-block; width:6em;">Last Name:</p> 
                     <input 
                         type="text" 
@@ -103,6 +113,7 @@
             </header>
             <div class="w3-container">
                 <form method="POST" action="main">
+                    &nbsp;&nbsp;&nbsp;
                     <p style="display:inline-block; width:6em;">Spam Me!:</p>
                     <input 
                         type="email" 
@@ -155,7 +166,7 @@
                 </div>
             </header>
             <div class="w3-container">
-                <p>Your time zone is currently:&nbsp;
+                <p>&nbsp;&nbsp;&nbsp;Your time zone is currently:&nbsp;
                     <% 
                         String Zone = TimeZone.getTimeZone("GMT-8").getID();
                             out.print(Zone); 
