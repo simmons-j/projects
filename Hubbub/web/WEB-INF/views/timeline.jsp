@@ -8,6 +8,8 @@
     <body>
         <div id="navbar" class="w3-bar" style="background-color:#92C4BE">
             <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
+            <!-- Seems to make sense to add a nav link to the profile view -->
+            <a class="w3-bar-item w3-button" href="main?action=profile">Profile</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
         </div>
         <div class="w3-container">

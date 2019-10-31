@@ -1,22 +1,29 @@
-        <div class="w3-container">
+<!-- Add "w3-card-4" to the class attributes in the first div -->
+        <div class="w3-container w3-card-4">
             <h2>Add Yer Blurb&trade;</h2>
             <c:if test="${not empty flash}">
                 <h3 class="flash">${flash}</h3>
             </c:if>
-            <form class="w3-container w3-card-4 w3-margin" method="POST" action="main">
+            <form class="w3-container w3-margin" method="POST" action="main">
                 <input type="hidden" name="action" value="post"/>
-                <p>
-                    <textarea id="content" style="max-width:90%; max-height:90%"
-                              rows="3" cols="60"
-                              onkeyup="charcountupdate(this.value)"
-                              name="content">${param.content}</textarea><br/>
-                    <label for="content">
+                <p><!-- Removed rows="3" cols="60" from the textarea as they are not needed -->
+                <!-- removed the style from the textarea because it autosizes by default -->
+                    <textarea 
+                            id="content"
+                            onkeyup="charcountupdate(this.value)"
+                            name="content">
+                        ${param.content}
+                    </textarea>
+                    <br>
+<!-- The character count isn't a "label" so I changed to a p tag. I also added style to align it to the right with a 10% margin -->
+                <p style="text-align: right; margin-right: 10%">
+                <!-- I think surrounding the character count text in "small" looks nicer -->
+                    <small> 
                         Characters: <span id="charcount"></span> left
-                    </label>
+                    </small> 
                 </p>
                 <p>
-                    <button class="w3-button w3-section w3-ripple"
-                            style="background-color:#92C4BE">
+                    <button class="w3-button w3-section w3-ripple" style="background-color:#92C4BE">
                         Disseminate Wisdom
                     </button>
                 </p>
