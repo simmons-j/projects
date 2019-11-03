@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="w3-card-4"> 
 <!-- Added margin to the w-3-card-4 style and changed 64px to 34px. style="margin-bottom:64px" -->
-    <header class="w3-container w3-light-gray">
+<!-- Remove "w3-container" from the header class as it causes unnecessary extra spacing  -->
+    <header class="w3-light-gray">
 <!-- Here is where magic happens. Add id="flex-container" in the span, wrapping the existing span tag around everything in the header area. This references the new #flex-container added to the hubbub.css file. -->
         <span id="flex-container" class="w3-container w3-light-gray">
             <!-- remove these from class="w3-left-align w3-large" -->
