@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="w3-bar" style="background-color:#92C4BE">
-            <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
+            <a class="w3-bar-item w3-button" href="main?action=guest">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=join">Sign Me Up!</a>
         </div>
         <div class="w3-container">
