@@ -14,4 +14,8 @@ public interface DataService {
     
     Comment addComment(User user, Post target, String content);
     List<Comment> findCommentsByTargetAndPage(Post target, int offset, int limit);
+
+    //Profile profile(User user, String userProfile);
+    
+    
 }

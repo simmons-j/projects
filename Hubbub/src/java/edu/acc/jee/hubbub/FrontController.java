@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sun.java2d.cmm.Profile;
 
 public class FrontController extends HttpServlet {
     private String actionDefault;
@@ -30,6 +31,7 @@ public class FrontController extends HttpServlet {
             case "join": destination = join(request); break;
             case "timeline": destination = timeline(request); break;
             case "post": destination = post(request); break;
+            case "profile": destination = profile(request); break;
         }
         
         String view;
@@ -174,6 +176,17 @@ public class FrontController extends HttpServlet {
             request.setAttribute("flash", "There's too much post in yer post! 140 characters max, please.");
             return "post";
         }
+        this.getDataService().addPost(content, user);
+        return redirectTag + "timeline";       
+    }
+
+    private String profile(HttpServletRequest request) {
+        User user = this.getSessionUser(request);
+        if (user == null) return redirectTag + "guest";
+        
+        if (request.getMethod().equalsIgnoreCase("GET")) return "profile";
+        String content = request.getParameter("${user}.profile");
+        
         this.getDataService().addPost(content, user);
         return redirectTag + "timeline";       
     }

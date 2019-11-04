@@ -129,6 +129,22 @@ span.psw {
     padding-bottom: .25em;
 }
 
+.greenbutton{
+    display:inline-block;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color: inherit;
+    border-radius: 3px; 
+    border-width: 1px; 
+    border-style: solid;
+    background-color: #93C4BE; 
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+    padding: 4px 12px
+}
+
 .profile-card {
     border-color:#8F3049;
     border-width:10px;
