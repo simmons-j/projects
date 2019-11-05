@@ -86,7 +86,6 @@ public class ListDAO implements DataService {
                 .replace("\"", "&quot;")
                 .replace("%", "&#37;");    
         Comment comment = new Comment(author, target, content);
-        comment.setId(comment.hashCode());
         comments.add(comment);
         target.getComments().add(comment);
         return comment;
