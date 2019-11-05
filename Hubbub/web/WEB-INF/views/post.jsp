@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="w3-bar" style="background-color:#92C4BE">
-            <a class="w3-bar-item w3-button" href="main?action=timeline">${user}'s Timeline</a>
+            <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
         </div>
         <%@include file="/WEB-INF/jspf/postbox.jspf"%>

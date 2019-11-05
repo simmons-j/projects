@@ -1,4 +1,4 @@
--- DROP TABLE comments;
+DROP TABLE comments;
 DROP TABLE posts;
 DROP TABLE users;
 DROP TABLE profiles;
@@ -33,18 +33,16 @@ CREATE TABLE posts (
     CONSTRAINT fk_post_author FOREIGN KEY (author) REFERENCES users(username)
 );
 
-/*
-    CREATE TABLE comments (
-        author VARCHAR(20) NOT NULL,
-        target INTEGER NOT NULL,
-        comment VARCHAR(70) NOT NULL,
-        commented TIMESTAMP DEFAULT CURRENT TIMESTAMP,
-        id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,
-        CONSTRAINT pk_comments PRIMARY KEY (id),
-        CONSTRAINT fk_comment_author FOREIGN KEY (author) REFERENCES users(username),
-        CONSTRAINT fk_comment_target FOREIGN KEY (target) REFERENCES posts(id)
-    );
-*/
+CREATE TABLE comments (
+    author VARCHAR(20) NOT NULL,
+    target INTEGER NOT NULL,
+    comment VARCHAR(70) NOT NULL,
+    commented TIMESTAMP DEFAULT CURRENT TIMESTAMP,
+    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY,
+    CONSTRAINT pk_comments PRIMARY KEY (id),
+    CONSTRAINT fk_comment_author FOREIGN KEY (author) REFERENCES users(username),
+    CONSTRAINT fk_comment_target FOREIGN KEY (target) REFERENCES posts(id)
+);
 
 INSERT INTO profiles (firstname, lastname, email, timezone, biography) VALUES
     ('John', 'Doe', 'johndoe@morgue.org', NULL, NULL),
@@ -61,3 +59,6 @@ INSERT INTO posts (author, posted, content) VALUES
     ('johndoe', '2017-05-09 08:23:47.110', 'My first Hubbub post! #JavaRules #J2EERocks'),
     ('johndoe', '2017-06-02 19:00:05.965', 'I''ve invited Jane to join.'),
     ('janedoe', '2018-01-13 06:30:45.888', 'Alright, I''ve signed up. Now what?');
+
+INSERT INTO comments (author, target, comment) VALUES
+    ('janedoe', 2, 'I''m here, @johndoe!');

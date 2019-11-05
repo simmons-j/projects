@@ -55,16 +55,19 @@ public class ListDAO implements DataService {
 
     @Override
     public synchronized Post addPost(String content, User author) {
-        content = content
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("'", "&apos;")
-                .replace("\"", "&quot;")
-                .replace("%", "&#37;");
+        content = sanitize(content);
         Post post = new Post(content, author);
         author.getPosts().add(post);
         posts.add(post);
         return post;
+    }
+    
+    @Override
+    public Post findPostById(int id) {
+        for (Post p : posts)
+            if (p.getId() == id)
+                return p;
+        return null;
     }
 
     @Override
@@ -78,27 +81,33 @@ public class ListDAO implements DataService {
     }
     
     @Override
+    public boolean updateProfileFor(User user, Profile changed) {
+        if (!changed.isValid()) return false;
+        user.getProfile().setFirstName(changed.getFirstName());
+        user.getProfile().setLastName(changed.getLastName());
+        user.getProfile().setEmail(changed.getEmail());
+        user.getProfile().setTimeZone(changed.getTimeZone());
+        if (changed.getBiography() != null)
+            user.getProfile().setBiography(sanitize(changed.getBiography()));
+        return true;  
+    }
+    
+    @Override
     public Comment addComment(User author, Post target, String content) {
-        content = content
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("'", "&apos;")
-                .replace("\"", "&quot;")
-                .replace("%", "&#37;");    
+        content = sanitize(content);    
         Comment comment = new Comment(author, target, content);
-        comment.setId(comment.hashCode());
         comments.add(comment);
         target.getComments().add(comment);
         return comment;
     }
     
-    @Override
-    public List<Comment> findCommentsByTargetAndPage(Post target, int offset, int limit) {
-        return target.getComments()
-                .stream()
-                .sorted((a,b) -> b.getCommented().compareTo(a.getCommented()))
-                .skip(offset)
-                .limit(limit)
-                .collect(Collectors.toList());        
+    private String sanitize(String input) {
+        return input
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("'", "&apos;")
+                .replace("\"", "&quot;")
+                .replace("%", "&#37;");                
     }
+    
 }

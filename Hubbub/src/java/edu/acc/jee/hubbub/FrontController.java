@@ -2,15 +2,18 @@ package edu.acc.jee.hubbub;
 
 import edu.acc.jee.hubbub.domain.DataService;
 import edu.acc.jee.hubbub.domain.Post;
+import edu.acc.jee.hubbub.domain.Profile;
 import edu.acc.jee.hubbub.domain.User;
 import java.io.IOException;
+import java.time.ZoneId;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.java2d.cmm.Profile;
 
 public class FrontController extends HttpServlet {
     private String actionDefault;
@@ -31,6 +34,7 @@ public class FrontController extends HttpServlet {
             case "join": destination = join(request); break;
             case "timeline": destination = timeline(request); break;
             case "post": destination = post(request); break;
+            case "comments": destination = comments(request); break;
             case "profile": destination = profile(request); break;
         }
         
@@ -179,16 +183,51 @@ public class FrontController extends HttpServlet {
         this.getDataService().addPost(content, user);
         return redirectTag + "timeline";       
     }
-
+    
+    private String comments(HttpServletRequest request) {
+        if (!loggedIn(request)) return redirectTag + "guest";
+        int postId = Integer.parseInt(request.getParameter("post"));
+        Post post = getDataService().findPostById(postId);
+        if (post == null) {
+            request.setAttribute("flash", "Blurb&trade; ID not found: " + postId);
+            return "comments";
+        }
+        request.setAttribute("post", post);
+        if (request.getMethod().equalsIgnoreCase("GET")) return "comments";
+        User author = getSessionUser(request);
+        String content = request.getParameter("content");
+        if (content != null || content.length() > 0 && content.length() <= 70)
+            this.getDataService().addComment(author, post, content);
+        else request.setAttribute("flash", "Your comment must have content.");
+        return "comments";
+    }
+    
     private String profile(HttpServletRequest request) {
-        User user = this.getSessionUser(request);
-        if (user == null) return redirectTag + "guest";
-        
-        if (request.getMethod().equalsIgnoreCase("GET")) return "profile";
-        String content = request.getParameter("${user}.profile");
-        
-        this.getDataService().addPost(content, user);
-        return redirectTag + "timeline";       
+        if (!loggedIn(request)) return redirectTag + "guest";
+        String forName = request.getParameter("for");
+        User target = getDataService().findUserByUsername(forName);
+        request.setAttribute("timeZones", getTimeZones());
+        if (target == null) {
+            request.setAttribute("flash", "No such Bub&trade;: " + forName);
+            return "profile";
+        }
+        if (request.getMethod().equalsIgnoreCase("GET")) {
+            request.setAttribute("target", target);
+            return "profile";
+        }
+        User user = getSessionUser(request);
+        if (!user.equals(target)) return redirectTag + "timeline";
+        Profile temp = new Profile();
+        temp.setFirstName(request.getParameter("firstName"));
+        temp.setLastName(request.getParameter("lastName"));
+        temp.setEmail(request.getParameter("email"));
+        temp.setTimeZone(request.getParameter("timeZone"));
+        temp.setBiography(request.getParameter("biography"));
+        boolean ok = getDataService().updateProfileFor(user, temp);
+        request.setAttribute("target", user);        
+        if (ok) request.setAttribute("success", "Deets&trade; Updated");
+        else request.setAttribute("flash", "Error updating your Deets&trade;.");
+        return "profile";
     }
     
     @SuppressWarnings("unchecked")
@@ -203,6 +242,14 @@ public class FrontController extends HttpServlet {
     @SuppressWarnings("unchecked")
     private User getSessionUser(HttpServletRequest request) {
         return (User)request.getSession().getAttribute("user");
+    }
+    
+    private List<String> getTimeZones() {
+        return ZoneId.SHORT_IDS.values()
+                .stream()
+                .filter((id) -> !id.startsWith("-"))
+                //.sorted()
+                .collect(Collectors.toList());
     }
 
 }

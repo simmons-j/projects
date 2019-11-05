@@ -1,40 +1,49 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="w3-card-4"> 
-<!-- Added margin to the w-3-card-4 style and changed 64px to 34px. style="margin-bottom:64px" -->
-<!-- Remove "w3-container" from the header class as it causes unnecessary extra spacing  -->
-    <header class="w3-light-gray">
-<!-- Here is where magic happens. Add id="flex-container" in the span, wrapping the existing span tag around everything in the header area. This references the new #flex-container added to the hubbub.css file. -->
-        <span id="flex-container" class="w3-container w3-light-gray">
-            <!-- remove these from class="w3-left-align w3-large" -->
-<!-- separate the next 2 lines of content in div tags with the id="main". This references the new #main added to the hubbub.css file. -->
-            <div id="main">
-                Posted by ${post.author}
-            </div>
-<!-- Remove the second span tag will all the class and style attributes as it will be replaced by a div with the new id="main". -->
-            <div id="main" style="color:#8F3049">
-                <small>
-                    ${post.posted}
-                </small>
-            </div>
+<div class="w3-card-4" style="margin-bottom:34px"> 
+    <header class="w3-container w3-light-gray">
+        <!-- Add id="flex-container" to the first <span> tag. 
+        (NOTE: #flex-container needs to be added to the hubbub.css file.) -->
+        <span id="flex-container">
+        <!-- Wrap the "Posted by" and c: statements in one tag (<h>, <p>, <section>, <span>, and 
+        <div> tags all work, but I think the p and the h tags have the best presentation.) 
+        Doing this will keep the content together. -->
+            <h4>
+                Posted by
+                <c:choose>
+                <c:when test="${not empty user}">
+                    <a href="main?action=profile&for=${post.author}">${post.author}</a>
+                </c:when>
+                <c:otherwise>${post.author}</c:otherwise>
+                </c:choose>
+            </h4>
+        <!-- Remove the first ending </span> tag as well as the second start <span> tag. 
+        Failing to do this will end in each span separating into different rows. Wrapping 
+        the entire content within the header in one span keeps it in one row/line -->
+<!--
+        </span>
+        <span class="w3-right-align hubbubred">
+-->
+        <!-- Wrap the ${post.posted} line in a tag (I recommend using the <p> or <small> tag) and 
+        use the class="hubbubred" in the tag. -->
+            <p class="hubbubred">
+                ${post.posted}
+            </p>
         </span>
     </header>
-    <section>
-        <div class="w3-container">
-            <p>${post.content}</p>
-        </div>
-<!-- Add class="w3-container" and id="flex-container" to the span tag and add id="main" to the div tag that encloses the c:if -->
-        <span class="w3-container" id="flex-container">
-            <!-- A -->
-            <div id="main">
-                <c:if test="${not empty user && not empty post.comments}">
-                    <p>
-                        <a href="main?action=comments&post=${post.id}">View Comments</a>
-                    </p> <!-- there was a closing p tag missing here -->
-                </c:if>
-            </div>
-        </span>
-    </section>
-    <footer class="w3-container" style="background-color:#E2DDD2">
+
+    <div class="w3-container">
+        <p>${post.content}</p>
+    </div>
+    <c:if test="${not empty user and empty param.post}">
+    <!-- Change class w3-margin-left to w3-margin-right and add the class w3-right-align
+    to the <p> tag. This will put the "View Comments" text on the bottom-right, so it won't
+    easily get mixed in with the post text --> 
+    <p class="w3-margin-right w3-right-align">
+        <a href="main?action=comments&post=${post.id}">View Comments</a>
+    </p>
+    </c:if>
+    <footer class="w3-container hubbubtan">
+    <!-- Want to make the presentation of View Comments even cooler? Move the c:if statement 
+    to the <footer> tag. -->
         <hr>
     </footer>
 </div>
