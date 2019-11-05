@@ -36,11 +36,10 @@
                                     type="submit" 
                                     name="updateprofile" 
                                     value="Save"/>
-                            </div>
+                            
                         </div>
                     </header>
                     <div class="w3-container">
-                        <form method="POST">
                             &nbsp;&nbsp;&nbsp;
                             <img 
                                 src="images/silhouette-avatar.jpg" 
@@ -50,15 +49,7 @@
                                     border-style: solid; 
                                     border-width: 1px;
                                     border-color: lightgray;"/>
-                            <input 
-                                type="hidden" 
-                                name="MAX_FILE_SIZE" 
-                                value="3000"/>
-                            <input
-                                class="hbutton2"
-                                type="file" 
-                                accept="image/gif,image/jpeg"/>
-                        </form>
+
                     </div>
                     <footer class="w3-container" style="background-color:#E2DDD2">
                         <p></p>
@@ -85,99 +76,89 @@
                             </div>
                         </div>
                     </header>
-                    <div class="flex-container" style="display:inline-block; width:auto;">
-                        <div class="w3-container">
-                            <form method="POST" action="main">
+                        <div class="w3-container" id="flex-container">
                                 &nbsp;&nbsp;&nbsp;
-                                <p style="display:inline-block; width:6em;">First Name:</p>
+                                <p style="display:inline-block; width:10em;"><label for="firstname">First Name:</label></p>
                                 <input 
                                     type="text" 
                                     name="firstname" 
                                     placeholder=" Mary"
                                     title="Type your first name here"/>
                         </div>
-                        <div class="w3-container">
-                                <br>
+                        <div class="w3-container" id="flex-container">
                                 &nbsp;&nbsp;&nbsp;
-                                <p style="display:inline-block; width:6em;">Last Name:</p> 
+                                <p style="display:inline-block; width:10em;"><label for="lastname">Last Name:</label></p>
                                 <input 
                                     type="text" 
                                     name="lastname" 
                                     placeholder=" Poppins"
                                     title="Type your surname here"/>
-                            </form>
                         </div>
-                    </div>
-                    <footer class="w3-container" style="background-color:#E2DDD2">
-                        <p></p>
-                    </footer>
-                </section>
-
-            <!-- Email -->
-                <section class="w3-card-4">
+                        <br>
+                <!-- Email -->
                     <header>
                         <div id="flex-container" class="w3-container w3-light-gray">
                             <h4>Email</h4>
                             <div id="main" style="color:#8F3049">
-                                <form method="POST" action="main">
+                                <small>
+                                    <em>
+                                        You shall be spammed.
+                                        &nbsp;&nbsp;&nbsp;
+                                    </em>
+                                </small>
                                     <input 
                                         class="greenbutton" 
                                         type="submit" 
                                         name="updateprofile" 
                                         value="Save"/>
-                                </form>
                             </div>
                         </div>
                     </header>
-                    <div class="w3-container">
-                        <form method="POST" action="main">
+                    <div class="w3-container" id="flex-container">
                             &nbsp;&nbsp;&nbsp;
-                            <p style="display:inline-block; width:6em;">Spam Me!:</p>
+                            <p style="display:inline-block; width:10em;"><label for="email">Bub&trade;'s Email:</label></p>
                             <input 
-                                type="email" 
+                                type="text" 
                                 name="email" 
-                                placeholder=" email"
+                                placeholder=" Email"
                                 title="Put your email address in this field"/>
-                        </form>
                     </div>
-                    <footer class="w3-container" style="background-color:#E2DDD2">
-                        <p></p>
-                    </footer>
-                </section>
+                <br>
 
             <!-- Biography -->
-                <section class="w3-card-4">
                     <header>
                         <div id="flex-container" class="w3-container w3-light-gray">
                             <h4>Biography</h4>
                             <div id="main" style="color:#8F3049">
-                                <form method="POST" action="main">
+                                <small>
+                                    <em>
+                                        Share your darkest secrets with everyone.
+                                        &nbsp;&nbsp;&nbsp;
+                                    </em>
+                                </small>
                                     <input 
                                         class="greenbutton" 
                                         type="submit" 
                                         name="updateprofile" 
                                         value="Save"/>
-                                </form>
                             </div>
                         </div>
                     </header>
                     <div class="w3-container">
-                        <form method="POST" action="main">
-                            <p>
+                            <p style="display:inline-block; width:10em"><label for="biography">${user}:</label></p>
                                 <textarea 
                                 id="bio"
                                 spellcheck="true" 
                                 maxlength="512"
                                 onkeyup="charcountupdate(this.value)"
-                                title="Tell us about yourself. Share your darkest secrets with everyone"
-                                name="bio">
+                                title="Keep it brief Bub. You are limited to 512 characters."
+                                name="biography">
                                 ${param.bio}
                                 </textarea>
                                 <br>
                                 <small>
                                     Characters: <span id="charcount"></span> left
                                 </small>
-                            </p>
                         <script type="text/javascript">
                         document.getElementById("bio").focus();
                         function charcountupdate(str) {
@@ -187,13 +168,9 @@
                         charcountupdate("");
                         </script>
                     </div>
-                    <footer class="w3-container" style="background-color:#E2DDD2">
-                        <p></p>
-                    </footer>
-                </section>
+                    <br>
 
             <!-- Timezone -->
-                <section class="w3-card-4">
                     <header>
                         <div id="flex-container" class="w3-container w3-light-gray">
                             <h4>Timezone</h4>
