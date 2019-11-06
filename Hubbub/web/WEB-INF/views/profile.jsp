@@ -20,6 +20,7 @@
             <h2>Deets&trade; for <span class="hubbubred">${target}</h2>
             <h6>Bub&trade; since <f:formatDate type="date" value="${target.joined}"/></h6>
         </div>
+        <hr>
         <div class="w3-container"><!-- area for success/flash message -->
             <c:choose>
                 <c:when test="${not empty flash}">
@@ -37,147 +38,153 @@
             <c:if test="${empty disabled}">
                 <p>The following fields are all optional and may be updated piecemeal.</p>
             </c:if>
-    <!-- Avatar -->
             <div class="w3-card-4">
-                <header>
-                    <div id="flex-container" class="w3-container w3-light-gray">
-                        <h4 class="w3-margin-left">Avatar</h4>
-                    </div>
-                    <div id="main" style="color:#8F3049">
-                </header>
-                <div class="w3-container" style="margin-top: 1em">
-                    &nbsp;&nbsp;&nbsp;
-                    <img src="avatar?for=${target}"/>
-                    <c:if test="${target eq user}">
-                        <button class="w3-button w3-margin-right hubbubblue">
-                            <a href="main?action=avatar">Upload a new Avatar</a>
+    <!-- Avatar -->
+            <header class="w3-container w3-light-gray" style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                <span id="flex-container">
+                    <h4>Avatar</h4>
+                </span>
+            </header>
+            <div class="w3-container" style="margin-top: 1em">
+                &nbsp;&nbsp;&nbsp;
+                <img src="avatar?for=${target}"/>
+                <c:if test="${target eq user}">
+                    <button class="w3-button w3-margin-right hubbubblue">
+                        <a href="main?action=avatar">Upload a new Avatar</a>
+                    </button>
+                    <c:if test="${user.profile.avatar ne null}">
+                        <button class="w3-button w3-margin-left hubbublue">
+                            <a href="main?action=revert">Revert to Default Avatar</a>
                         </button>
-                        <c:if test="${user.profile.avatar ne null}">
-                            <button class="w3-button w3-margin-left hubbublue">
-                                <a href="main?action=revert">Revert to Default Avatar</a>
-                            </button>
-                        </c:if>
                     </c:if>
-                </div>
+                </c:if>
+            </div>
             <br>
 
     <!-- Name -->
-                <header>
-                    <div id="flex-container" class="w3-container w3-light-gray">
-                        <h4>Name</h4>
-                        <div id="main" style="color:#8F3049">
-                            <small>
-                                <em>
-                                    Your real name. No extra points for cleverness or creativity.
-                                    &nbsp;&nbsp;&nbsp;
-                                </em>
-                            </small>
-                        </div>
-                    </div>
-                </header>
-                <div class="w3-container">
-                        &nbsp;&nbsp;&nbsp;
-                        <p>
-                            <input class="w3-input w3-light-gray" type="text" ${disabled}
-                               name="firstName" value="${target.profile.firstName}"/>
-                            <label>First Name</label>
-                        </p>
-                    </div>
-                <div class="w3-container">
-                        &nbsp;&nbsp;&nbsp;
-                        <p>
-                            <input class="w3-input w3-light-gray" type="text" ${disabled}
-                               name="lastName" value="${target.profile.lastName}"/>
-                            <label>Last Name</label>
-                        </p>
-                    </div>
-                    <br>
+            <header class="w3-container w3-light-gray" style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                <span id="flex-container">
+                    <h4>Name</h4>
+                    <p class="hubbubred">
+                        <small>
+                            <em>
+                                Your real name. No extra points for cleverness or creativity.
+                                &nbsp;&nbsp;&nbsp;
+                            </em>
+                        </small>
+                    </p>
+                </span>
+            </header>
+            <div class="w3-container">
+                &nbsp;&nbsp;&nbsp;
+                <p>
+                    <input class="w3-input w3-light-gray" type="text" ${disabled}
+                       name="firstName" value="${target.profile.firstName}"/>
+                    <label>First Name</label>
+                </p>
+            </div>
+            <div class="w3-container">
+                &nbsp;&nbsp;&nbsp;
+                <p>
+                    <input class="w3-input w3-light-gray" type="text" ${disabled}
+                       name="lastName" value="${target.profile.lastName}"/>
+                    <label>Last Name</label>
+                </p>
+            </div>
+            <br>
 
     <!-- Email -->
-                <header>
-                    <div id="flex-container" class="w3-container w3-light-gray">
-                        <h4>Email</h4>
-                        <div id="main" style="color:#8F3049">
-                            <small>
-                                <em>
-                                    You shall be spammed.
-                                    &nbsp;&nbsp;&nbsp;
-                                </em>
-                            </small>
-                        </div>
-                    </div>
-                </header>
-                <div class="w3-container">
-                    &nbsp;&nbsp;&nbsp;
-                    <p>
-                        <input class="w3-input w3-light-gray" type="text" ${disabled}
-                           name="email" value="${target.profile.email}"/>
-                        <label>Email</label>
+            <header class="w3-container w3-light-gray" style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                <span id="flex-container">
+                    <h4>Email</h4>
+                    <p class="hubbubred">
+                        <small>
+                            <em>
+                                You shall be spammed.
+                                &nbsp;&nbsp;&nbsp;
+                            </em>
+                        </small>
                     </p>
-                </div>
-                <br>
+                </span>
+            </header>
+            <div class="w3-container">
+                &nbsp;&nbsp;&nbsp;
+                <p>
+                    <input class="w3-input w3-light-gray" type="text" ${disabled}
+                       name="email" value="${target.profile.email}"/>
+                    <label>Email</label>
+                </p>
+            </div>
+            <br>
 
     <!-- Biography -->
-                <header>
-                    <div id="flex-container" class="w3-container w3-light-gray">
-                        <h4>Biography</h4>
-                        <div id="main" style="color:#8F3049">
-                            <small>
-                                <em>
-                                    Share your darkest secrets with everyone.
-                                    &nbsp;&nbsp;&nbsp;
-                                </em>
-                            </small>
-                        </div>
-                    </div>
-                </header>
-                <div class="w3-container">
-                    <p>
-                        <textarea rows="10" cols="50" name="biography" ${disabled} spellcheck="true"
-                            class="w3-input w3-light-gray"
-                            onkeyup="charcountupdate(this.value)">${target.profile.biography}</textarea>
-                        <label>Biography (<span id="charcount"></span> left)</label>
+            <header class="w3-container w3-light-gray" style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                <span id="flex-container">
+                    <h4>Biography</h4>
+                    <p class="hubbubred">
+                        <small>
+                            <em>
+                                Share your darkest secrets with everyone.
+                                &nbsp;&nbsp;&nbsp;
+                            </em>
+                        </small>
                     </p>
-                    <script type="text/javascript">
-                    function charcountupdate(str) {
-                        var lng = str.length;
-                        document.getElementById("charcount").innerHTML = 512 - lng;
-                    }
-                    charcountupdate("");
-                    </script>
-                </div>
-                <br>
+                </span>
+            </header>
+            <div class="w3-container">
+                <p>
+                    <textarea rows="10" cols="50" name="biography" ${disabled} spellcheck="true"
+                        class="w3-input w3-light-gray"
+                        onkeyup="charcountupdate(this.value)">${target.profile.biography}
+                    </textarea>
+                </p>
+                <p class="w3-margin-right w3-right-align">
+                    <small>
+                        Characters (<span id="charcount"></span> left)
+                    </small>
+                </p>
+                <script type="text/javascript">
+                function charcountupdate(str) {
+                    var lng = str.length;
+                    document.getElementById("charcount").innerHTML = 512 - lng;
+                }
+                charcountupdate("");
+                </script>
+            </div>
+            <br>
 
         <!-- Timezone -->
-                <header>
-                    <div id="flex-container" class="w3-container w3-light-gray">
-                        <h4>Timezone</h4>
-                    </div>
-                </header>
-                <div class="w3-container">
-                    <p>
-                        <select class="w3-select" ${disabled} name="timeZone">
-                            <option value=""></option>
-                            <c:forEach var="tz" items="${timeZones}">
-                            <c:set var="selected" value="${tz eq target.profile.timeZone ? 'selected' : ''}"/>
-                            <option value="${tz}" ${selected}>${tz}</option>
-                            </c:forEach>
-                        </select>                    
-                        <label>Time Zone</label>
-                    </p>
-                </div>
-                <footer class="w3-container" style="background-color:#E2DDD2">
-                    <p></p>
-                </footer>
-                <c:if test="${empty disabled}">
-                    <hr/>
-                    <p>
-                        <button class="w3-button w3-section w3-ripple hubbubblue">
-                            Save Deets&trade;
-                        </button>
-                    </p>
-                </c:if>
+            <header class="w3-container w3-light-gray" style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                <span id="flex-container">
+                    <h4>Timezone</h4>
+                </span>
+            </header>
+            <div class="w3-container">
+                <p>
+                    <select class="w3-select" ${disabled} name="timeZone">
+                        <option value=""></option>
+                        <c:forEach var="tz" items="${timeZones}">
+                        <c:set var="selected" value="${tz eq target.profile.timeZone ? 'selected' : ''}"/>
+                        <option value="${tz}" ${selected}>${tz}</option>
+                        </c:forEach>
+                    </select>
+                </p>
+                <p class="w3-margin-right w3-right-align">
+                    <small>Time Zone</small>
+                </p>
             </div>
+            <footer class="w3-container" style="background-color:#E2DDD2">
+                <p></p>
+            </footer>
+        </div>
+
+            <c:if test="${empty disabled}">
+                <p>
+                    <button class="w3-button w3-section w3-ripple hubbubblue">
+                        Save Deets&trade;
+                    </button>
+                </p>
+            </c:if>
         </form>
     </body>
 </html>

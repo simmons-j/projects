@@ -8,7 +8,5 @@
     <div class="w3-container w3-margin-left">
         <p>${comment.comment}</p>
     </div>
-    <footer class="w3-container" style="background-color:#E2DDD2">
-        <hr>
-    </footer>
+    <footer class="w3-container" style="background-color:#E2DDD2"><br></footer>
 </div>

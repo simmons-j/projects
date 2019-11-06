@@ -1,15 +1,18 @@
+/*      Author : jsimmons       */
+
+section:nth-last-of-type(1) {margin: 5px;}
+
 .w3-cell-row:before,.w3-cell-row:after,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{display:table;clear:both}
+
 .flash {color:#FF2B06;}
+
 .hubbubblue {background-color:#92C4BE;}
+
 .hubbubtan {background-color:#E2DDD2;}
+
 .hubbubred {color: #8F3049;}
+
 #flex-container {width: auto; height: auto; display: -webkit-flex; /* Safari */ -webkit-align-items: center; /* Safari 7.0+ */ align-items: center; -webkit-justify-content: space-between; /* Safari 6.1+ */ display: flex; justify-content: space-between; padding-top: .25em; padding-bottom: .25em;}
-
-
-/* 
-    Created on : Oct 29, 2019, 6:07:50 PM
-    Author     : jsimmons
-*/
 
 .flash {color: #FF2B06;}
 

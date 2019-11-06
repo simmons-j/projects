@@ -1,4 +1,4 @@
-<div class="w3-card-4" style="margin-bottom:34px"> 
+<div class="w3-card-4"> 
     <header class="w3-container w3-light-gray">
         <!-- Add id="flex-container" to the first <span> tag. 
         (NOTE: #flex-container needs to be added to the hubbub.css file.) -->
@@ -44,6 +44,6 @@
     <footer class="w3-container hubbubtan">
     <!-- Want to make the presentation of View Comments even cooler? Move the c:if statement 
     to the <footer> tag. -->
-        <hr>
+        <br>
     </footer>
 </div>
