@@ -14,6 +14,7 @@
         <div class="w3-container">
             <%@include file="/WEB-INF/jspf/masthead.jspf"%>
             <h1>Welcome to Hubbub&trade;, ${user}</h1>
+            <hr>
             <div class="w3-container w3-margin">
                 <%@include file="/WEB-INF/jspf/postbox.jspf"%>
                 <h2>Here's all our Bub&trade;s' Blurb&trade;s.</h2>

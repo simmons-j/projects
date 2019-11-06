@@ -16,11 +16,9 @@
             </c:if>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Out</a>
         </div>
-        <div class="w3-container">
-            <h1><img src="images/hubbub_logo_no-text.png" style="height: 1em">
-                Deets&trade; for <span class="hubbubred">${target}</span>
-                (Bub&trade; since <f:formatDate type="date" value="${target.joined}"/>)
-            </h1>
+        <div class="w3-container w3-margin">
+            <h2>Deets&trade; for <span class="hubbubred">${target}</h2>
+            <h6>Bub&trade; since <f:formatDate type="date" value="${target.joined}"/></h6>
         </div>
         <div class="w3-container"><!-- area for success/flash message -->
             <c:choose>
@@ -47,7 +45,7 @@
                     </div>
                     <div id="main" style="color:#8F3049">
                 </header>
-                <div class="w3-container">
+                <div class="w3-container" style="margin-top: 1em">
                     &nbsp;&nbsp;&nbsp;
                     <img src="avatar?for=${target}"/>
                     <c:if test="${target eq user}">
