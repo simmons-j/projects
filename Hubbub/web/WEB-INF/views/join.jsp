@@ -18,7 +18,7 @@
                 <h2 class="flash">${flash}</h2>
             </c:if>
         </div>
-        <div class="w3-animate-opacity w3-container w3-half w3-margin-top">
+        <div class="w3-container w3-half w3-margin-top">
             <form class="w3-container w3-card-4" method="POST" action="main">
                 <input type="hidden" name="action" value="join"/>
                 <p>
