@@ -1,5 +1,5 @@
 <div class="w3-card-4">
-    <header class="w3-container hubbubblue">
+    <header class="w3-container hubbubblue-background">
             <span id="flex-container">
                 <h4>Comment by ${comment.author}</h4>
                 <p class="hubbubred">${comment.commented}</p>

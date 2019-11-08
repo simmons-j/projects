@@ -8,7 +8,7 @@
         <style type="text/css">.success {color:#92C4BE;}</style>
     </head>
     <body>
-        <div class="w3-bar hubbubblue">
+        <div class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=post">I'm Gonna Blurb&trade;!</a>
             <c:if test="${target ne user}">
@@ -16,7 +16,7 @@
             </c:if>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Out</a>
         </div>
-        <div class="w3-container w3-margin">
+        <div class="w3-container">
             <h2>Deets&trade; for <span class="hubbubred">${target}</h2>
             <h6>Bub&trade; since <f:formatDate type="date" value="${target.joined}"/></h6>
         </div>
@@ -49,7 +49,7 @@
                 &nbsp;&nbsp;&nbsp;
                 <img src="avatar?for=${target}"/>
                 <c:if test="${target eq user}">
-                    <button class="w3-button w3-margin-right hubbubblue">
+                    <button class="w3-button w3-margin-right hubbubblue-background">
                         <a href="main?action=avatar">Upload a new Avatar</a>
                     </button>
                     <c:if test="${user.profile.avatar ne null}">
@@ -180,7 +180,7 @@
 
             <c:if test="${empty disabled}">
                 <p>
-                    <button class="w3-button w3-section w3-ripple hubbubblue">
+                    <button class="w3-button w3-section w3-ripple hubbubblue-background">
                         Save Deets&trade;
                     </button>
                 </p>

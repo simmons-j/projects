@@ -41,7 +41,7 @@
         <a href="main?action=comments&post=${post.id}">View Comments</a>
     </p>
     </c:if>
-    <footer class="w3-container hubbubtan">
+    <footer class="w3-container hubbubtan-background">
     <!-- Want to make the presentation of View Comments even cooler? Move the c:if statement 
     to the <footer> tag. -->
         <br>

@@ -1,5 +1,5 @@
 <div class="w3-card-4">
-    <header class="w3-container hubbubtan">
+    <header class="w3-container hubbubtan-background">
             <h4>Add Yer Blurb&trade;</h4>
     </header>
     <c:if test="${not empty flash}">
@@ -25,13 +25,13 @@
                 Disseminate Wisdom
             </button>
         </p>
+        <script type="text/javascript">
+            document.getElementById("content").focus();
+            function charcountupdate(str) {
+                var lng = str.length;
+                document.getElementById("charcount").innerHTML = 140 - lng;
+            }
+            charcountupdate("");
+        </script>
     </form>
 </div>
-<script type="text/javascript">
-    document.getElementById("content").focus();
-    function charcountupdate(str) {
-        var lng = str.length;
-        document.getElementById("charcount").innerHTML = 140 - lng;
-    }
-    charcountupdate("");
-</script>

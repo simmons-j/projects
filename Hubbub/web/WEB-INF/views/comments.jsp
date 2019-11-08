@@ -6,7 +6,7 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <div class="w3-bar hubbubblue">
+        <div class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
@@ -14,7 +14,7 @@
         <section>
             <%@include file="/WEB-INF/jspf/commentbox.jspf"%>
         </section>
-        <div class="w3-container w3-margin-top">
+        <div class="w3-container">
             <h1>The Blurb&trade; Sayeth:</h1>
             <%@include file="/WEB-INF/jspf/post.jspf"%>
             <c:forEach var="comment" items="${post.comments}">
