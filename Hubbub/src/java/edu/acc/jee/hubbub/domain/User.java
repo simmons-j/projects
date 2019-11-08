@@ -8,7 +8,7 @@ public class User implements Serializable {
     
     private String username;
     private String passhash;
-    private Date   joined;
+    private Date   joined = new Date();
     private int    profileId;
     
     public User() {
@@ -61,4 +61,17 @@ public class User implements Serializable {
     public String toString() {
         return username;
     }
+    
+    @Override
+    public int hashCode() {
+        return username.hashCode();
+    }
+    
+    @Override
+    public boolean equals(Object other) {
+        if (! (other instanceof User)) return false;
+        User otherUser = (User)other;
+        return otherUser.username.equals(this.username);
+    }
+    
 }

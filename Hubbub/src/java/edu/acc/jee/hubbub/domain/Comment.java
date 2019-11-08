@@ -10,7 +10,7 @@ public class Comment implements Serializable {
     private String authorName;
     private int postId;
     private String comment;
-    private Date commented;
+    private Date commented = new Date();
     private Integer id = SEQ.incrementAndGet();
     
     public Comment() {}
@@ -32,6 +32,10 @@ public class Comment implements Serializable {
 
     public int getPostId() {
         return postId;
+    }
+    
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     public String getComment() {

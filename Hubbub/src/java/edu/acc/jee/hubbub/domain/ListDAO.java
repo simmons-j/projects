@@ -20,11 +20,17 @@ public class ListDAO implements DataService {
         if (this.userExists(bean.getUsername()))
             throw new IllegalArgumentException("Username " + bean.getUsername() + " is unavailable");
         String hash = HashTool.hash(bean.getPassword());
-        Profile profile = new Profile();
-        profiles.add(profile);
+        Profile profile = addProfile();
         User user = new User(bean.getUsername(), hash, profile.getId());
         users.add(user);
         return user;
+    }
+    
+    @Override
+    public Profile addProfile() {
+        Profile profile = new Profile();
+        profiles.add(profile);
+        return profile;
     }
 
     @Override
@@ -135,4 +141,16 @@ public class ListDAO implements DataService {
             .limit(limit)
             .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Post> findPostsByAuthorAndPage(String authorName, int offset, int limit) {
+        return posts
+            .stream()
+            .filter(p -> p.getAuthorName().equals(authorName))
+            .sorted((a,b) -> b.getPosted().compareTo(a.getPosted()))
+            .skip(offset)
+            .limit(limit)
+            .collect(Collectors.toList());
+    }
+    
 }
