@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="w3-card-4"> 
     <header class="w3-container w3-light-gray">
         <!-- Add id="flex-container" to the first <span> tag. 
@@ -46,8 +47,44 @@
     </p>
     </c:if>
     <footer class="w3-container hubbubtan-background">
-    <!-- Want to make the presentation of View Comments even cooler? Move the c:if statement 
-    to the <footer> tag. -->
-        <br>
+        <c:choose>
+            <c:when test="${not empty user and comments post.id}">
+                <div>
+                    <form method="POST" action="main">
+                        <input type="hidden" name="action" value="comments"/>
+                        <input type="hidden" name="post" value="${post.id}"/>
+                        <p>
+                            <textarea id="content" style="max-width:90%; max-height:90%"
+                                      rows="2" cols="40"
+                                      onkeyup="charcountupdate(this.value)"
+                                      name="content">
+                            </textarea>
+                        </p>
+                        <p class="w3-margin-right w3-right-align">
+                            <small>
+                                Characters (<span id="charcount"></span> left)
+                            </small>
+                        </p>
+                        <script type="text/javascript">
+                            document.getElementById("content").focus();
+                            function charcountupdate(str) {
+                                var lng = str.length;
+                                document.getElementById("charcount").innerHTML = 70 - lng;
+                            }
+                            charcountupdate("");
+                        </script>
+                        <p>
+                            <button class="w3-button w3-section w3-ripple"
+                                    style="background-color:#92C4BE">
+                                Opine
+                            </button>
+                        </p>
+                    </form>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <hr>
+            </c:otherwise>
+        </c:choose>
     </footer>
 </div>
