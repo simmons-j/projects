@@ -6,14 +6,15 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <div class="w3-bar hubbubblue-background">
+        <!-- NAVBAR -->
+        <nav class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=join">Sign Me Up!</a>
-        </div>
+        </nav>
+        <!-- MAIN CONTENT SECTION -->
         <section>
             <div>
                 <%@include file="/WEB-INF/jspf/masthead.jspf"%>
-                <h2>Hubbub&trade;</h2>
                 <hr>
                 <c:if test="${not empty flash}">
                     <h2 class="flash">${flash}</h2>
