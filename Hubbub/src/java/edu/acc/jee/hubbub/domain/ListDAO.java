@@ -152,5 +152,4 @@ public class ListDAO implements DataService {
             .limit(limit)
             .collect(Collectors.toList());
     }
-    
 }

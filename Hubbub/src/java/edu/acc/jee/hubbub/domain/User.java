@@ -4,12 +4,27 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable {
+
+    /**
+     * @return the profile
+     */
+    public String getProfile() {
+        return profile;
+    }
+
+    /**
+     * @param profile the profile to set
+     */
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
     public static final String USERNAME_PATTERN = "^\\w{6,20}$";
     
     private String username;
     private String passhash;
     private Date   joined = new Date();
     private int    profileId;
+    private String profile;
     
     public User() {
     }

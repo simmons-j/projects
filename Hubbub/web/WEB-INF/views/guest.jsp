@@ -13,7 +13,7 @@
         </nav>
         <!-- MAIN CONTENT SECTION -->
         <section>
-            <div class="w3-container">
+            <div>
                 <%@include file="/WEB-INF/jspf/masthead.jspf"%>
                 <h2>Welcome to Hubbub&trade;</h2>
                 <hr>

@@ -270,7 +270,7 @@ public class FrontController extends HttpServlet {
         return ZoneId.SHORT_IDS.values()
                 .stream()
                 .filter((id) -> !id.startsWith("-"))
-                //.sorted()
+                .sorted()
                 .collect(Collectors.toList());
     }
 

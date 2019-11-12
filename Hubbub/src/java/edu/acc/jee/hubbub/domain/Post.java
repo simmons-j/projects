@@ -12,7 +12,7 @@ public class Post implements Serializable {
     private String authorName;
     private Date   posted;
     private Integer id = SEQ.incrementAndGet();
-    // Added "comments" and "hasComment" with Getters&Setters prior to class on 11.12.2019 
+    // Added "comments" with Getters&Setters prior to class on 11.12.2019 
     private String  comments;
 
     public Post() {

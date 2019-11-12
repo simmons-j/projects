@@ -7,11 +7,15 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <div class="w3-bar hubbubblue-background">
+        <!-- NAVBAR -->
+        <nav class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
-        </div>
-        <%@include file="/WEB-INF/jspf/postbox.jspf"%>
+        </nav>
+        <!-- MAIN CONTENT SECTION -->
+        <section>
+            <%@include file="/WEB-INF/jspf/postbox.jspf"%>
+        </section>
     </body>
 </html>
