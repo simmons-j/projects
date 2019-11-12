@@ -5,12 +5,15 @@ import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Post implements Serializable {
+
     private static final AtomicInteger SEQ = new AtomicInteger();
     
     private String content;
     private String authorName;
     private Date   posted;
     private Integer id = SEQ.incrementAndGet();
+    // Added "comments" and "hasComment" with Getters&Setters prior to class on 11.12.2019 
+    private String  comments;
 
     public Post() {
     }
@@ -19,7 +22,7 @@ public class Post implements Serializable {
         this(content, authorName, new Date());
     }
 
-    public Post(String content, String authorName, Date posted) {
+    public Post(String content, String authorName, Date posted, Boolean hasComment) {
         this.content = content;
         this.authorName = authorName;
         this.posted = posted;
@@ -57,9 +60,16 @@ public class Post implements Serializable {
         this.id = id;
     }
 
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+    
     @Override
     public String toString() {
-        return "Post[id:" + id + ", content length:" + content.length() + 
-                ", authorName=" + authorName + ", posted=" + posted + '}';
+        return "Post[id:" + id + ", content length:" + content.length() + ", authorName=" + authorName + ", posted=" + posted + '}';
     }
 }
