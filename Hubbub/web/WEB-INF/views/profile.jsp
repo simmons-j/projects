@@ -8,13 +8,14 @@
         <style type="text/css">.success {color:#92C4BE;}</style>
     </head>
     <body>
-        <!-- NAVBAR -->
+        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOG ME OUT -->
         <nav class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
-            <a class="w3-bar-item w3-button" href="main?action=post">I'm Gonna Blurb&trade;!</a>
-            <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
+            <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
+            <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deetz&trade;</a>
+            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user}">My Wall</a>
             <c:choose>
-                <c:when test="${user eq target}"></c:when>
+                <c:when test="${target eq user}"></c:when>
                 <c:when test="${followers.contains(user)}">
                     <a class="w3-bar-item w3-button" href="main?action=unfollow&target=${target}">
                         Unfollow ${target}
@@ -26,8 +27,10 @@
                     </a>
                 </c:otherwise>
             </c:choose>
-            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user.username}">My Wall</a>
-            <a class="w3-bar-item w3-button" href="main?action=logout">Log Out</a>
+            <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
+            <span style="float: right; font-size: 75%" class="w3-bar-item hubbubred">
+                Logged in as ${user}
+            </span>
         </nav>
         <!-- MAIN CONTENT SECTION -->
         <section>

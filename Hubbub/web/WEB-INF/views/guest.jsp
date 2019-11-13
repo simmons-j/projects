@@ -6,7 +6,7 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <!-- NAVBAR -->
+        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOGOUT -->
         <nav class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=login">I'm a Bub&trade;</a>
             <a class="w3-bar-item w3-button" href="main?action=join">Sign Me Up!</a>

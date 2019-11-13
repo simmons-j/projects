@@ -4,6 +4,7 @@ DROP TABLE posts;
 DROP TABLE users;
 DROP TABLE profiles;
 
+-- CREATE Tables for the data --
 CREATE TABLE profiles (
     firstname VARCHAR(20),
     lastname VARCHAR(30),
@@ -53,6 +54,7 @@ CREATE TABLE following (
     CONSTRAINT fk_followee_user FOREIGN KEY (followee) REFERENCES users(username)
 );
 
+-- INSERT Enter data within the tables --
 INSERT INTO profiles (firstname, lastname, email, timezone, biography) VALUES
     ('John', 'Doe', 'johndoe@morgue.org', NULL, NULL),
     ('Jane', 'Doe', NULL, NULL, 'I sometimes hang with @johndoe.'),

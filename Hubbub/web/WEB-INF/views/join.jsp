@@ -6,9 +6,9 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <!-- NAVBAR -->
+        <!-- NAVBAR : HOME/GUEST/TIMELINE | I'M ALREADY A BUB/LOGIN -->
         <nav class="w3-bar hubbubblue-background">
-            <a class="w3-bar-item w3-button" href="main?action=guest">Home</a>
+            <a class="w3-bar-item w3-button" href="main?action=guest">Hubbub Home</a>
             <a class="w3-bar-item w3-button" href="main?action=login">I'm Already a Bub&trade;</a>
         </nav>
         <!-- MAIN CONTENT SECTION -->

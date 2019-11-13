@@ -6,12 +6,29 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <!-- NAVBAR -->
-        <nav id="navbar" class="w3-bar" style="background-color:#92C4BE">
+        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOG ME OUT -->
+        <nav class="w3-bar" style="background-color:#92C4BE">
+            <a class="w3-bar-item w3-button" <!--href="main?action=timeline"-->Home</a>
             <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
             <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user.username}">My Wall</a>
+            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user}">My Wall</a>
+       <!-- <c:choose>
+                <c:when test="${user eq target}"></c:when>
+                <c:when test="${followers.contains(user)}">
+                    <a class="w3-bar-item w3-button" href="main?action=unfollow&target=${target}">
+                        Unfollow ${target}
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a class="w3-bar-item w3-button" href="main?action=follow&target=${target}">
+                        Follow ${target}
+                    </a>
+                </c:otherwise>
+            </c:choose> -->
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
+            <span style="float: right; font-size: 75%" class="w3-bar-item hubbubred">
+                Logged in as ${user}
+            </span>
         </nav>
         <!-- MAIN CONTENT SECTION -->
         <section>
