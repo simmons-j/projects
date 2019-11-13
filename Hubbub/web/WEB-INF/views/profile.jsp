@@ -8,19 +8,21 @@
         <style type="text/css">.success {color:#92C4BE;}</style>
     </head>
     <body>
-        <div class="w3-bar hubbubblue-background">
+        <!-- NAVBAR -->
+        <nav class="w3-bar hubbubblue-background">
             <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
             <a class="w3-bar-item w3-button" href="main?action=post">I'm Gonna Blurb&trade;!</a>
             <c:if test="${target ne user}">
                 <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
             </c:if>
+            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user.username}">My Wall</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Out</a>
-        </div>
+        </nav>
         <div class="w3-container">
             <h2>
-		<c:set var="owner" value="${target eq user ? 'Me' : target}"/>
+                <c:set var="owner" value="${target eq user ? 'Me' : target}"/>
                 Hubbub&trade; Deets&trade; for 
-		<a href="main?action=wall&for=${target}" class="hubbubred">${owner}</a>
+                <a href="main?action=wall&for=${target}" class="hubbubred">${owner}</a>
 	    </h2>
             <h6>Bub&trade; since <f:formatDate type="date" value="${target.joined}"/></h6>
         </div>

@@ -10,7 +10,7 @@
         <input type="hidden" name="action" value="comments"/>
         <input type="hidden" name="post" value="${post.id}"/>
         <p>
-            <textarea id="content" style="max-width:90%; max-height:90%"
+            <textarea id="content" style="max-width: 100%"
                       rows="2" cols="40"
                       onkeyup="charcountupdate(this.value)"
                       name="content">
@@ -37,5 +37,7 @@
         </p>
     </form>
     </div>
-    <footer class="w3-container hubbubblue-background"><br></footer>
+    <footer class="w3-container hubbubblue-background">
+        <br>
+    </footer>
 </div>

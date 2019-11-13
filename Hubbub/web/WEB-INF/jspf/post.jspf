@@ -26,11 +26,8 @@
         <!-- Wrap the ${post.posted} line in a tag (I recommend using the <p> or <small> tag) and 
         use the class="hubbubred" in the tag. -->
             <p class="hubbubred">
-
-<!-- Replacing with the f:formatDate tag
-		${post.posted}
--->
-		<f:formatDate type="both" value="${post.posted}"/>
+                <f:formatDate type="both" value="${post.posted}"/>
+                ${post.posted}
             </p>
         </span>
     </header>
@@ -38,53 +35,22 @@
     <div class="w3-container">
         <p>${post.content}</p>
     </div>
-    <c:if test="${not empty user and empty param.post}">
-    <!-- Change class w3-margin-left to w3-margin-right and add the class w3-right-align
-    to the <p> tag. This will put the "View Comments" text on the bottom-right, so it won't
-    easily get mixed in with the post text --> 
-    <p class="w3-margin-right w3-right-align">
-        <a href="main?action=comments&post=${post.id}">View Comments</a>
-    </p>
-    </c:if>
+
     <footer class="w3-container hubbubtan-background">
-        <c:choose>
-            <c:when test="${not empty user and comments post.id}">
-                <div>
-                    <form method="POST" action="main">
-                        <input type="hidden" name="action" value="comments"/>
-                        <input type="hidden" name="post" value="${post.id}"/>
-                        <p>
-                            <textarea id="content" style="max-width:90%; max-height:90%"
-                                      rows="2" cols="40"
-                                      onkeyup="charcountupdate(this.value)"
-                                      name="content">
-                            </textarea>
-                        </p>
-                        <p class="w3-margin-right w3-right-align">
-                            <small>
-                                Characters (<span id="charcount"></span> left)
-                            </small>
-                        </p>
-                        <script type="text/javascript">
-                            document.getElementById("content").focus();
-                            function charcountupdate(str) {
-                                var lng = str.length;
-                                document.getElementById("charcount").innerHTML = 70 - lng;
-                            }
-                            charcountupdate("");
-                        </script>
-                        <p>
-                            <button class="w3-button w3-section w3-ripple"
-                                    style="background-color:#92C4BE">
-                                Opine
-                            </button>
-                        </p>
-                    </form>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <hr>
-            </c:otherwise>
-        </c:choose>
+        <c:if test="${not empty user and empty param.post}">
+        <!-- Change class w3-margin-left to w3-margin-right and add the class w3-right-align
+        to the <p> tag. This will put the "View Comments" text on the bottom-right, so it won't
+        easily get mixed in with the post text --> 
+        
+            <a href="main?action=comments&post=${post.id}">
+                <p class="w3-margin-right w3-right-align" style="font-size: 75%" >
+                View Comments
+                </p>
+            </a>
+        
+        </c:if>
+        <c:if test="${not empty flash}">
+            <h4 class="flash">${flash}</h4>
+        </c:if>
     </footer>
 </div>

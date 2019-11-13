@@ -22,7 +22,7 @@ public class Post implements Serializable {
         this(content, authorName, new Date());
     }
 
-    public Post(String content, String authorName, Date posted, Boolean hasComment) {
+    public Post(String content, String authorName, Date posted) {
         this.content = content;
         this.authorName = authorName;
         this.posted = posted;
