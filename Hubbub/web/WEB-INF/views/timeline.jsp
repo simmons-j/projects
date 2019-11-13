@@ -10,6 +10,7 @@
         <nav id="navbar" class="w3-bar" style="background-color:#92C4BE">
             <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
             <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
+            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user.username}">My Wall</a>
             <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
         </nav>
         <!-- MAIN CONTENT SECTION -->

@@ -26,9 +26,15 @@
                 </h2>
                 <hr>
             </div>
+        
+<!-- It doesn't make sense to show the postbox in this view, so I am commenting it out for now -->
+    <!--
             <div>
-                <%@include file="/WEB-INF/jspf/postbox.jspf"%>
+    -->
+                <//%@include file="/WEB-INF/jspf/postbox.jspf"%>
+    <!--
             </div>
+    -->
             <div>
                 <h2>Here are all of ${param.for}'s Blurb&trade;s.</h2>
                 <c:forEach var="post" items="${posts}">
