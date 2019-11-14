@@ -17,6 +17,7 @@
                 Logged in as ${user}
             </span>
         </nav>
+
         <!-- MAIN CONTENT SECTION -->
         <section>
             <div>

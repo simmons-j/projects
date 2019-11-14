@@ -6,6 +6,7 @@
         <title>Hubbub&trade; &raquo; Deets&trade; &raquo; ${target}</title>
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
         <style type="text/css">.success {color:#92C4BE;}</style>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     </head>
     <body>
         <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOG ME OUT -->
@@ -32,19 +33,21 @@
                 Logged in as ${user}
             </span>
         </nav>
+
         <!-- MAIN CONTENT SECTION -->
         <section>
             <div>
-            <h2>
-                <c:set var="owner" value="${target eq user ? 'Me' : target}"/>
-                Hubbub&trade; Deets&trade; for 
-                <a href="main?action=wall&for=${target}" class="hubbubred">${owner}</a>
-            </h2>
-            <h6>
-                Bub&trade; since <f:formatDate type="date" value="${target.joined}"/>
-            </h6>
+                <h2>
+                    <c:set var="owner" value="${target eq user ? 'Me' : target}"/>
+                    Hubbub&trade; Deets&trade; for 
+                    <a href="main?action=wall&for=${target}" class="hubbubred">${owner}</a>
+                </h2>
+                <h6>
+                    Bub&trade; since <f:formatDate type="date" value="${target.joined}"/>
+                </h6>
             </div>
             <hr>
+
             <div><!-- area for success/flash message -->
                 <c:choose>
                     <c:when test="${not empty flash}">
@@ -66,9 +69,13 @@
             <div class="w3-card-4">
         <!-- Avatar -->
                 <header class="w3-container w3-light-gray" 
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; border-top-width: 2px;">
                     <span id="flex-container">
-                        <h4>Avatar</h4>
+                        <h4>
+                            <i class="fas fa-theater-masks" aria-hidden="true"></i>
+                            Avatar
+                        </h4>
                     </span>
                 </header>
                 <div class="w3-container" style="margin-top: 1em">
@@ -88,9 +95,13 @@
 
         <!-- Name -->
                 <header class="w3-container w3-light-gray" 
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; border-top-width: 2px;">
                     <span id="flex-container">
-                        <h4>Name</h4>
+                        <h4>
+                            <i class="fas fa-address-book" aria-hidden="true"></i>
+                            Name
+                        </h4>
                         <p class="hubbubred">
                             <small>
                                 <em>
@@ -120,9 +131,13 @@
 
         <!-- Email -->
                 <header class="w3-container w3-light-gray" 
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; border-top-width: 2px;">
                     <span id="flex-container">
-                        <h4>Email</h4>
+                        <h4>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            Email
+                        </h4>
                         <p class="hubbubred">
                             <small>
                                 <em>
@@ -144,9 +159,12 @@
 
         <!-- Biography -->
                 <header class="w3-container w3-light-gray" 
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; border-top-width: 2px;">
                     <span id="flex-container">
-                        <h4>Biography</h4>
+                        <h4>
+                            <i class="fas fa-book-open" aria-hidden="true"></i>
+                            Biography</h4>
                         <p class="hubbubred">
                             <small>
                                 <em>
@@ -181,9 +199,13 @@
 
         <!-- Timezone -->
                 <header class="w3-container w3-light-gray" 
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; border-top-width: 2px;">
                     <span id="flex-container">
-                        <h4>Timezone</h4>
+                        <h4>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                               Timezone
+                        </h4>
                     </span>
                 </header>
                 <div class="w3-container">
@@ -217,7 +239,10 @@
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background" 
                         style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
-                    <h4>Followees of ${target}</h4>
+                    <h4>
+                        <i class="fa fa-user-secret"></i>
+                        Followees of ${target}
+                    </h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
@@ -244,12 +269,17 @@
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background"
                         style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
-                    <h4>Followers of ${target}</h4>
+                    <h4>
+                        <i class="fa fa-users"></i>
+                        Followers of ${target}
+                    </h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
                         <c:if test="${empty followers}">
-                            <li class="w3-bar">Currently, no one is following ${target}.</li> 
+                            <li class="w3-bar">Currently, no one is following ${target}. 
+                                <i class='far fa-frown'></i>
+                            </li> 
                         </c:if>
                         <c:forEach var="follower" items="${followers}">
                             <li class="w3-bar">
@@ -270,8 +300,12 @@
         <!-- Tags -->
             <div class="w3-card-4">
                 <header class="w3-container hubbubtan-background"
-                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
-                    <h4>Tags Created by ${target}</h4>
+                        style="border-top-color: #E2DDD2; 
+                        border-top-style: solid; 
+                        border-top-width: 2px;">
+                    <h4><i class="fa fa-hashtag" aria-hidden="true"></i>
+                        Tags Created by ${target}
+                    </h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
@@ -280,10 +314,12 @@
                         </c:if>
                         <c:forEach var="tag" items="${tags}">
                             <li class="w3-bar">
-                                <img src="images/hashtag.png" width="40px" class="w3-bar-item"/>
                                 <div class="w3-bar-item">
                                     <span class="w3-large">
-                                        <a href="main?action=tags&tagName=${tag.tagName}">${tag.tagName}</a>
+                                        <a href="main?action=tags&tagName=${tag.tagName}">
+                                            <i class="fa fa-hashtag" style="font-size:inherit" aria-hidden="true"></i>
+                                            ${tag.tagName}
+                                        </a>
                                     </span>
                                     <br>
                                 </div>
