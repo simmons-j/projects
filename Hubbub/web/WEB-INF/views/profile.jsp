@@ -60,7 +60,7 @@
                 <input type="hidden" name="for" value="${target}"/>
                 <c:set var="disabled" value="${target eq user ? '' : 'disabled'}"/>
                 <c:if test="${empty disabled}">
-                    <p>The following fields are all optional and may be updated piecemeal.</p>
+                    <em>The following fields are all optional and may be updated piecemeal.</em>
                 </c:if>
 
             <div class="w3-card-4">
@@ -212,7 +212,7 @@
             </div>
             </form>
 
-
+            <hr>
         <!-- Followees -->
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background" 
@@ -221,6 +221,9 @@
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
+                        <c:if test="${empty followees}">
+                            <li class="w3-bar">Currently, ${target} is not following anyone.</li> 
+                        </c:if>
                         <c:forEach var="followee" items="${followees}">
                             <li class="w3-bar">
                                 <img src="avatar?for=${followee}" class="w3-bar-item w3-circle" style="width:60px">
@@ -235,7 +238,8 @@
                     </ul>
                 </div>
             </div>
-        
+
+            <hr>
         <!-- Followers -->
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background"
@@ -244,6 +248,9 @@
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
+                        <c:if test="${empty followers}">
+                            <li class="w3-bar">Currently, no one is following ${target}.</li> 
+                        </c:if>
                         <c:forEach var="follower" items="${followers}">
                             <li class="w3-bar">
                                 <img src="avatar?for=${follower}" class="w3-bar-item w3-circle" style="width:60px">
@@ -259,17 +266,21 @@
                 </div>
             </div>
 
+            <hr>
         <!-- Tags -->
             <div class="w3-card-4">
-                <header class="w3-container hubbubred-background"
+                <header class="w3-container hubbubtan-background"
                         style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
                     <h4>Tags Created by ${target}</h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
+                        <c:if test="${empty tags}">
+                            <li class="w3-bar">Currently, ${target} has not created any tags.</li> 
+                        </c:if>
                         <c:forEach var="tag" items="${tags}">
                             <li class="w3-bar">
-                                <img src="images/hashtag.png" width="40" class="w3-bar-item"/>
+                                <img src="images/hashtag.png" width="40px" class="w3-bar-item"/>
                                 <div class="w3-bar-item">
                                     <span class="w3-large">
                                         <a href="main?action=tags&tagName=${tag.tagName}">${tag.tagName}</a>
@@ -280,7 +291,7 @@
                         </c:forEach>
                     </ul>
                 </div>
-
+            </div>
         </section>
     </body>
 </html>
