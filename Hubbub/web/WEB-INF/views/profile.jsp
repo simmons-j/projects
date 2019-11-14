@@ -217,13 +217,13 @@
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background" 
                         style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
-                    <h4>Followees</h4>
+                    <h4>Followees of ${target}</h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
                         <c:forEach var="followee" items="${followees}">
                             <li class="w3-bar">
-                                <img src="avatar?for=${followee}" class="w3-bar-item w3-circle" style="width:80px">
+                                <img src="avatar?for=${followee}" class="w3-bar-item w3-circle" style="width:60px">
                                 <div class="w3-bar-item">
                                     <span class="w3-large">
                                         <a href="main?action=wall&for=${followee}">${followee}</a>
@@ -240,21 +240,46 @@
             <div class="w3-card-4">
                 <header class="w3-container hubbubblue-background"
                         style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
-                    <h4>Followers</h4>
+                    <h4>Followers of ${target}</h4>
                 </header>
                 <div class="w3-container w3-light-gray">
                     <ul class="w3-ul">
                         <c:forEach var="follower" items="${followers}">
                             <li class="w3-bar">
-                                <img src="avatar?for=${follower}" class="w3-bar-item w3-circle" style="width:80px">
+                                <img src="avatar?for=${follower}" class="w3-bar-item w3-circle" style="width:60px">
                                 <div class="w3-bar-item">
-                                    <span class="w3-large"><a href="main?action=wall&for=${follower}">${follower}</a></span><br>
+                                    <span class="w3-large">
+                                        <a href="main?action=wall&for=${follower}">${follower}</a>
+                                    </span>
+                                    <br>
                                 </div>
                             </li>
                         </c:forEach>
                     </ul>
                 </div>
             </div>
+
+        <!-- Tags -->
+            <div class="w3-card-4">
+                <header class="w3-container hubbubred-background"
+                        style="border-top-color: #E2DDD2; border-top-style: solid; border-top-width: 2px;">
+                    <h4>Tags Created by ${target}</h4>
+                </header>
+                <div class="w3-container w3-light-gray">
+                    <ul class="w3-ul">
+                        <c:forEach var="tag" items="${tags}">
+                            <li class="w3-bar">
+                                <img src="images/hashtag.png" width="40" class="w3-bar-item"/>
+                                <div class="w3-bar-item">
+                                    <span class="w3-large">
+                                        <a href="main?action=tags&tagName=${tag.tagName}">${tag.tagName}</a>
+                                    </span>
+                                    <br>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
 
         </section>
     </body>
