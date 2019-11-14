@@ -7,16 +7,18 @@
         <!-- Wrap the "Posted by" and c: statements in one tag (<h>, <p>, <section>, <span>, and 
         <div> tags all work, but I think the p and the h tags have the best presentation.) 
         Doing this will keep the content together. -->
-            <h4>
-                <img src="avatar?for=${post.authorName}" width="80"/>
-                Posted by
-                <c:choose>
-                <c:when test="${not empty user}">
-                    <a href="main?action=wall&for=${post.authorName}">${post.authorName}</a>
-                </c:when>
-                <c:otherwise>${post.authorName}</c:otherwise>
-                </c:choose>
-            </h4>
+            <section>
+                <h4>
+                    <img src="avatar?for=${post.authorName}" width="60"/>
+                    Posted by
+                    <c:choose>
+                    <c:when test="${not empty user}">
+                        <a href="main?action=wall&for=${post.authorName}">${post.authorName}</a>
+                    </c:when>
+                    <c:otherwise>${post.authorName}</c:otherwise>
+                    </c:choose>
+                </h4>
+            </section>
         <!-- Remove the first ending </span> tag as well as the second start <span> tag. 
         Failing to do this will end in each span separating into different rows. Wrapping 
         the entire content within the header in one span keeps it in one row/line -->
@@ -28,7 +30,6 @@
         use the class="hubbubred" in the tag. -->
             <p class="hubbubred">
                 <f:formatDate type="both" value="${post.posted}"/>
-                ${post.posted}
             </p>
         </span>
     </header>
