@@ -7,30 +7,8 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOG ME OUT -->
-        <nav class="w3-bar" style="background-color:#92C4BE">
-            <a class="w3-bar-item w3-button" <!--href="main?action=timeline"-->Home</a>
-            <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deets&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user}">My Wall</a>
-       <!-- <c:choose>
-                <c:when test="${user eq target}"></c:when>
-                <c:when test="${followers.contains(user)}">
-                    <a class="w3-bar-item w3-button" href="main?action=unfollow&target=${target}">
-                        Unfollow ${target}
-                    </a>
-                </c:when>
-                <c:otherwise>
-                    <a class="w3-bar-item w3-button" href="main?action=follow&target=${target}">
-                        Follow ${target}
-                    </a>
-                </c:otherwise>
-            </c:choose> -->
-            <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
-            <span style="float: right; font-size: 75%" class="w3-bar-item hubbubred">
-                Logged in as ${user}
-            </span>
-        </nav>
+        <%@include file="/WEB-INF/jspf/navbar.jspf"%>
+
         <!-- MAIN CONTENT SECTION -->
         <section>
             <div>
@@ -42,6 +20,7 @@
                 <div>
                     <%@include file="/WEB-INF/jspf/postbox.jspf"%>
                 </div>
+                
                 <h2>Here are all of our Bub&trade;s' Blurb&trade;s.</h2>
                 <c:forEach var="post" items="${posts}">
                     <%@include file="/WEB-INF/jspf/post.jspf"%>

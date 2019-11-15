@@ -1,6 +1,6 @@
 /*      Author : jsimmons       */
 
-section:nth-of-type(1) {margin: 5px;}
+section:nth-of-type(1) {margin: 2%;}
 
 .w3-cell-row:before,.w3-cell-row:after,.w3-clear:after,.w3-clear:before,.w3-bar:before,.w3-bar:after{display:table;clear:both}
 
@@ -34,3 +34,4 @@ section:nth-of-type(1) {margin: 5px;}
 
 header.w3-container {margin-top: 34px;}
 
+textarea {width: 100%;}

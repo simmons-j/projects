@@ -6,40 +6,17 @@
         <title>Hubbub&trade; &raquo; Deets&trade; &raquo; ${target}</title>
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
         <style type="text/css">.success {color:#92C4BE;}</style>
-        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     </head>
     <body>
-        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOG ME OUT -->
-        <nav class="w3-bar hubbubblue-background">
-            <a class="w3-bar-item w3-button" href="main?action=timeline">Home</a>
-            <a class="w3-bar-item w3-button" href="main?action=post">Add a Blurb&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=profile&for=${user}">My Deetz&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=wall&for=${user}">My Wall</a>
-            <c:choose>
-                <c:when test="${target eq user}"></c:when>
-                <c:when test="${followers.contains(user)}">
-                    <a class="w3-bar-item w3-button" href="main?action=unfollow&target=${target}">
-                        Unfollow ${target}
-                    </a>
-                </c:when>
-                <c:otherwise>
-                    <a class="w3-bar-item w3-button" href="main?action=follow&target=${target}">
-                        Follow ${target}
-                    </a>
-                </c:otherwise>
-            </c:choose>
-            <a class="w3-bar-item w3-button" href="main?action=logout">Log Me Out</a>
-            <span style="float: right; font-size: 75%" class="w3-bar-item hubbubred">
-                Logged in as ${user}
-            </span>
-        </nav>
+        <%@include file="/WEB-INF/jspf/navbar.jspf"%>
 
         <!-- MAIN CONTENT SECTION -->
         <section>
             <div>
+                <%@include file="/WEB-INF/jspf/masthead.jspf"%>
                 <h2>
                     <c:set var="owner" value="${target eq user ? 'Me' : target}"/>
-                    Hubbub&trade; Deets&trade; for 
+                    Deets&trade; for 
                     <a href="main?action=wall&for=${target}" class="hubbubred">${owner}</a>
                 </h2>
                 <h6>
@@ -164,7 +141,8 @@
                     <span id="flex-container">
                         <h4>
                             <i class="fas fa-book-open" aria-hidden="true"></i>
-                            Biography</h4>
+                            Biography
+                        </h4>
                         <p class="hubbubred">
                             <small>
                                 <em>
@@ -177,7 +155,7 @@
                 </header>
                 <div class="w3-container">
                     <p>
-                        <textarea style="max-width: 100%" rows="10" cols="50" name="biography" 
+                        <textarea style="max-width: 100%" rows="7" name="biography" 
                                   ${disabled} spellcheck="true" class="w3-input w3-light-gray" 
                                   onkeyup="charcountupdate(this.value)">
                             ${profile.biography}
@@ -329,5 +307,6 @@
                 </div>
             </div>
         </section>
+        <br><br><br>
     </body>
 </html>

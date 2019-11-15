@@ -7,11 +7,8 @@
         <%@include file="/WEB-INF/jspf/w3csshead.jspf"%>
     </head>
     <body>
-        <!-- NAVBAR : HOME/TIMELINE | ADD A BLURB/POST | MY DEETS/PROFILE | MY WALL | FOLLOW/UNFOLLOW | LOGOUT -->
-        <nav class="w3-bar hubbubblue-background">
-            <a class="w3-bar-item w3-button" href="main?action=login">I'm a Bub&trade;</a>
-            <a class="w3-bar-item w3-button" href="main?action=join">Sign Me Up!</a>
-        </nav>
+        <%@include file="/WEB-INF/jspf/navbar.jspf"%>
+        
         <!-- MAIN CONTENT SECTION -->
         <section>
             <div>
@@ -20,7 +17,7 @@
                 <hr>
             </div>
             <div>
-                <h3>Here are the latest Bub&trade;s' Blurb&trade;s.</h3>
+                <h2>Here are the latest Bub&trade;s' Blurb&trade;s.</h2>
                 <c:forEach var="post" items="${posts}">
                     <%@include file="/WEB-INF/jspf/post.jspf"%>
                 </c:forEach>
